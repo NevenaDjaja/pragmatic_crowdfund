@@ -1,6 +1,7 @@
 <div class="main">
   <h1><%= pluralize(@projects.count, 'Project') %></h1>
 
+  <%= link_to 'Add New Project', new_project_path %>
   <div class="container">
     <% @projects.each do |project| %>
       <article>
