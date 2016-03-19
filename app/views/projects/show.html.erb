@@ -1,7 +1,10 @@
 <h1>My project</h1>
 
 <article>
-  <h1><%= @project[:name] %></h1>
+  <h1>
+    <%= image_for @project %>
+    <%= @project[:name] %>
+  </h1>
   <p><%= @project[:description] %></p>
   <table style="text-align: left;">
     <tbody>
@@ -17,12 +20,19 @@
         <th>Ends on:</th>
         <td><%= time_from_now(@project) %></td>
       </tr>
+      <tr>
+        <th>Team members:</th>
+        <td><%= @project[:team_members] %></td>
+      </tr>
+      <tr>
+        <th>Image file name:</th>
+        <td><%= @project[:image_file_name] %></td>
+      </tr>
     </tbody>
   </table>
 </article>
 
 <p>
-  <%= link_to "All projects", projects_path %> | 
   <%= link_to "Edit", edit_project_path(@project) %> |
   <%= link_to "Delete", project_path(@project), method: :delete, 
             data: { confirm: "Are you sure?" } %>
