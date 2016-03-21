@@ -4,7 +4,7 @@
   <%= link_to 'Add New Project', new_project_path %>
   <div class="container">
     <% @projects.each do |project| %>
-      <article>
+      <article class="project">
         <h1>
           <%= image_for project %>
           <%= link_to project[:name], project_path(project.id) %>

@@ -1,0 +1,23 @@
+@import 'colors';
+
+header#page-header {
+	color: $primary-color; 
+	background: $secondary-color;
+	padding: 5px; 
+
+	h1 {
+		text-align: center;
+		text-transform: uppercase;
+	}
+}
+
+footer#page-footer {
+	background: lighten($primary-color, 25%); 
+	color: #FF8466;
+	padding: 3px;
+	margin-top: 24px;
+
+	p {
+		margin-left: 6px;
+	}
+}
