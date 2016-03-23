@@ -13,8 +13,11 @@ class ProjectsController < ApplicationController
 
   def update
   	@project = Project.find(params[:id])
-  	@project.update(project_params)
-  	redirect_to project_path(@project)
+  	if @project.update(project_params)
+  	 redirect_to project_path(@project)
+    else
+      render :edit
+    end
   end
 
   def new
@@ -23,8 +26,11 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.save
-    redirect_to project_path(@project)
+    if @project.save
+      redirect_to project_path(@project)
+    else
+      render :new
+    end
   end
 
   def destroy
