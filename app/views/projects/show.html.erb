@@ -1,39 +1,30 @@
-<h1>My project</h1>
-
-<article>
-  <h1>
-    <%= image_for @project %>
-    <%= @project[:name] %>
-  </h1>
-  <p><%= @project[:description] %></p>
-  <table style="text-align: left;">
-    <tbody>
-      <tr>
-        <th>Pledge:</th>
-        <td><%= number_to_currency(@project[:target_pledge_amount]) %></td>
-      </tr>
-      <tr>
-        <th>Website:</th>
-        <td><%= @project[:website] %></td>
-      </tr>
-      <tr>
-        <th>Ends on:</th>
-        <td><%= time_from_now(@project) %></td>
-      </tr>
-      <tr>
-        <th>Team members:</th>
-        <td><%= @project[:team_members] %></td>
-      </tr>
-      <tr>
-        <th>Image file name:</th>
-        <td><%= @project[:image_file_name] %></td>
-      </tr>
-    </tbody>
-  </table>
+<article id="project" class="project">
+  <header>
+    <%= image_for(@project) %>
+    <h1><%= @project.name %></h1>
+    <h2><%= format_pledging_ends_on(@project) %></h2>
+  </header>
+  <p>
+    <%= @project.description %>
+  </p>
+  <h3>Target Pledge Amount</h3>
+  <p>
+    <%= number_to_currency(@project.target_pledge_amount) %>
+  </p>
+  <h3>Website</h3>
+  <p>
+    <%= @project.website %>
+  </p>
+  <h3>Team Members</h3>
+  <p>
+    <%= @project.team_members %>
+  </p>
+  <footer>
+    <nav>
+      <%= link_to "Edit", edit_project_path(@project), class: 'button' %>
+      <%= link_to "Delete", @project, 
+                  class: 'button', 
+                  method: :delete, data: { confirm: 'Are you sure?' } %>
+    </nav>
+  </footer>
 </article>
-
-<p>
-  <%= link_to "Edit", edit_project_path(@project) %> |
-  <%= link_to "Delete", project_path(@project), method: :delete, 
-            data: { confirm: "Are you sure?" } %>
-</p>
